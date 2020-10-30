@@ -1,11 +1,14 @@
 <div class="container">
-    <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
 </div>
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <app-sever-element 
-    *ngFor="let serverElement of serverElements" 
-    [srvElement]="serverElement"></app-sever-element>
+    <app-sever-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+      <p>
+        <strong *ngIf="serverElement.type==='server'" style="color: red;">{{ serverElement.content }}</strong>
+        <em *ngIf="serverElement.type==='blueprint'">{{ serverElement.content }}</em>
+      </p>
+    </app-sever-element>
   </div>
 </div>
